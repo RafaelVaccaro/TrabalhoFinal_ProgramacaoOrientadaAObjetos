@@ -1,34 +1,3 @@
-Objetos: 
-
-
-Pessoa [String Matricula, String nome, Object disciplinas(h>=28), carga horaria (somador disciplinas)]{
-
-    - Aluno {String Matricula, String nome, Object disciplinas(h>=28), carga horaria (somador disciplinas)}; 
-
-    - Prof{String Matricula, String nome, Object disciplinas(h>=12), carga horaria (somador disciplinas), String Formacao(non case sensitive)}; 
-
-}
-
-
-- Disciplinas (String identificador turma, int Carga horaria, String nome, Object prof(null), int Num de alunos, Stiring Descricao}; 
-    - Map turmas{}
-
-- Turma heranca disciplina
- - Id 
- - nome(origem disciplina)
- - prof
- - list alunos
-
-Map turmas
-
-Arquivos(um leitor):
-Prof.txt{
-   - Matricula
-    $ Nome
-}
-
-Aluno{
-    - Matricula
-    $ Nome
-    # Disciplinas
-}
+O que falta?
+- Aluno/Profoessor: consulta (discliplina, carga_horaria, nome, matricula) 
+- Map Pessoas {String matricula, Obj Pessoa} - ou devemos fazer 2 maps separados?
