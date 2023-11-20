@@ -2,21 +2,27 @@ import java.io.BufferedWriter;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
 
 public class Writer {
-    public static void main(String[] args) {
-        ArrayList<String> aList = new ArrayList<>();
-        for (int i = 0; i < 10; i++) {
-            aList.add("Linha teste n: " + (i + 1));
-        }
+    public static void Writer(HashMap<String, Aluno> Alunada) {
         try {
-            FileWriter fileWriter = new FileWriter("meuArquivo.txt");
+            FileWriter fileWriter = new FileWriter("Alunos.txt");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
-            for (String conteudo : aList) {
-                bufferedWriter.write(conteudo);
-                bufferedWriter.newLine();
-            }
+            Alunada.forEach((k, v) -> {
+                try {
+                    bufferedWriter.write("Matricula: " + k +
+                        "| nome: " + v.getNome() +
+                        "| carga Horaria: " + v.getConsultaCargaHoraria() +
+                        "| Disciplinas Desejadas: " + v.getDisciplinasMatriculada());
+                    bufferedWriter.newLine();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            });
+
+            // Fecha os recursos
             bufferedWriter.close();
             fileWriter.close();
         } catch (IOException e) {

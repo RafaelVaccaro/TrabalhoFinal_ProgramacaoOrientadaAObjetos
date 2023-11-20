@@ -1,0 +1,41 @@
+O que falta?
+- Map Pessoas {String matricula, Obj Pessoa} - ou devemos fazer 2 maps separados?
+
+
+O que temos pronto:
+
+
+- Classe Disciplinas (abstrata)
+    - nome
+    - carga_horaria
+    - descrição
+
+- Classe Turma (herda Disciplinas)
+    - Identificador (Stirng que recebe nome da Disciplinas + contador) -Gets/Sets
+    - contador alunos (int) - Get/Set
+    - capacidade de alunos (int) - Get
+    - matricula do Profoessor (String) - Get/Set
+
+- Classe abstrata Pessoa
+    - matricula
+    - nome 
+    - carga_horaria
+    - disciplinas = null
+
+- Classe alunos (herda pessoa)
+    - Inicialização do Array disciplinas
+    - get matricula
+    - get carga_horaria
+    -get disciplinas
+    - get nome
+    - metodo add disciplinas
+
+
+- Classe Professor (Herda Pessoa)
+    - metodo add disciplinas
+    - formação (Stirng)
+    - get nome
+    - get matricula
+    - get carga_horaria
+
+

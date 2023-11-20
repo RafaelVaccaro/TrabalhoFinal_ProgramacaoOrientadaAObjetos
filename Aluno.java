@@ -8,11 +8,40 @@ public class Aluno extends Pessoa {
     }
 
     public boolean addDisciplinas(Disciplinas disciplinas) {
-        if (this.carga_horaria + disciplinas.carga_horaria <= 12) {
+        if (this.carga_horaria + disciplinas.carga_horaria <= 28) {
             this.disciplinas.add(disciplinas);
                     return true;
                 } else
                     return false;
             }
+
+
+    public ArrayList getDisciplinasMatriculada (){
+        return disciplinas;
+    }
+
+    public int getConsultaCargaHoraria(){
+        return carga_horaria;
+    }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public String getMatricula(){
+        return matricula;
+    }
+
+    public static Aluno criarAluno(String matricula, int carga_horaria, String nome ){//falta o array de disciplinas desejadas
+        
+        //colocar consulta a alunada para saber se da pra add o aluno; add aluno a alunada;
+
+        Aluno x = new Aluno(matricula, carga_horaria, nome);
+
+        return x;
+
+    }
+
+
 }
 

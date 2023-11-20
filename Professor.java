@@ -19,4 +19,17 @@ public class Professor extends Pessoa {
         }
         return false;
     }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public String getMatricula(){
+        return matricula;
+    }
+
+    public int getConsultaCargaHoraria(){
+        return carga_horaria;
+    }
+
 }

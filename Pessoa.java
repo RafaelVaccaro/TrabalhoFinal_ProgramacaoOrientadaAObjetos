@@ -1,6 +1,6 @@
 import java.util.ArrayList;
 
-public class Pessoa {
+public abstract class Pessoa {
 
     protected String matricula, nome;
     protected int carga_horaria;
@@ -11,6 +11,12 @@ public class Pessoa {
         this.matricula = matricula;
         this.nome = nome;
         this.carga_horaria = carga_horaria;
-        this.disciplinas = null;
+        this.disciplinas = null; // adicionar
     }
+
+    public abstract int getConsultaCargaHoraria();
+    
+    public abstract String getNome();
+
+    public abstract String getMatricula();
 }
