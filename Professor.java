@@ -32,4 +32,18 @@ public class Professor extends Pessoa {
         return carga_horaria;
     }
 
+    public static Professor criarProfessor(String matricula, int carga_horaria, String nome, String formacao){
+
+        Professor x = new Professor(matricula, carga_horaria, nome, formacao);
+
+        return x;
+
+    }
+
+
+    public void setDisciplinas(Disciplinas x){
+
+        disciplinas.add(x);
+
+    }
 }

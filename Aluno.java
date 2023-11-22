@@ -32,9 +32,13 @@ public class Aluno extends Pessoa {
         return matricula;
     }
 
-    public static Aluno criarAluno(String matricula, int carga_horaria, String nome ){//falta o array de disciplinas desejadas
-        
-        //colocar consulta a alunada para saber se da pra add o aluno; add aluno a alunada;
+    public void setDisciplinas(Disciplinas x){
+
+        disciplinas.add(x);
+
+    }
+
+    public static Aluno criarAluno(String matricula, int carga_horaria, String nome){//falta o array de disciplinas desejadas
 
         Aluno x = new Aluno(matricula, carga_horaria, nome);
 

@@ -11,6 +11,7 @@ public class Turmas extends Disciplinas {
         this.contador_alunos = contador_alunos;
         this.capacidade_alunos = 10;
         this.matricula_professor = null;
+        //lista de presença aluno;
     }
 
     public String getNomeDisciplina(){
@@ -34,7 +35,7 @@ public class Turmas extends Disciplinas {
         return carga_horaria;
     }
 
-    public void setProfessor_Disciplina(String matricula_professor){
+    public void setProfessor_Turma(String matricula_professor){
         this.matricula_professor = matricula_professor;
     }
 
@@ -59,6 +60,14 @@ public class Turmas extends Disciplinas {
         return contador_alunos;
     }
 
+    public static Turmas criadorDeTurma(String nome, String descricao, int carga_horaria, int contador_alunos, Professor y){
+
+        Turmas x = new Turmas(nome, descricao, carga_horaria, contador_alunos);
+        x.setIdentificadorTurma();
+        x.setProfessor_Turma(y.getMatricula());
+        return x;
+
+    }
 
     //Seria legal ter um metodo para setar a capacidade;
     
