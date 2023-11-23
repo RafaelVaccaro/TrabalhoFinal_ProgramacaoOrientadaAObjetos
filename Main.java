@@ -2,6 +2,8 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.HashSet;
 
+import javax.swing.JFrame;
+
 public class Main {
 
     final static HashMap<String, Aluno> Alunada = new HashMap<>();
@@ -24,7 +26,8 @@ public class Main {
 
         Writer.Writer(Alunada);
 
-
+        Interface teste = new Interface();
+        teste.load();
 
         //Precisamos criar o Professorada 
         //Precisamos add disciplinas aos alunos
