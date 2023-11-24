@@ -4,7 +4,7 @@ public abstract class Pessoa {
 
     protected String matricula, nome;
     protected int carga_horaria;
-    protected ArrayList<Disciplinas> disciplinas;
+    protected ArrayList<String> disciplinas;
 
     //Construtor de Pessoas
     public Pessoa(String matricula, String nome, int carga_horaria) {

@@ -4,8 +4,8 @@ public  class Disciplinas {
 
     protected String nome, descricao;
     public int carga_horaria;
-    public ArrayList <Aluno> ListadeAlunos;
-    public ArrayList<Professor> ListadeProfessor;
+    public ArrayList <String> ListadeAlunos;
+    public ArrayList<String> ListadeProfessor;
      public ArrayList<Turmas> ListadeTurmas;
 
     //Construtor de Disciplinas
@@ -26,27 +26,35 @@ public  class Disciplinas {
         return descricao;
     }
 
-    public int gerCargaHorariaDisciplina(){
+    public int getCargaHorariaDisciplina(){
         return carga_horaria;
     }
 
-    public static Disciplinas criarDisciplinas(String nome, String descricao, int carga_horaria){
+    public static void criarDisciplinas(String nome, String descricao, int carga_horaria){
 
         Disciplinas x = new Disciplinas(nome, descricao, carga_horaria);
         
-        return x;
+        Main.GradeHorária.put(nome, x);        
 
     }
 
-    public void setAlunos(Aluno x){
+    public void setAlunos(String x){
         ListadeAlunos.add(x);
     }
 
-    public void setProfessor_Disciplina(Professor x){
+    public void setProfessor_Disciplina(String x){
         ListadeProfessor.add(x);
     }
 
     public void setTurmas(Turmas x){
         ListadeTurmas.add(x);
+    }
+
+    public ArrayList getAlunos(){
+        return ListadeAlunos;
+    }
+
+    public ArrayList getProfessores(){
+        return ListadeProfessor;
     }
 }

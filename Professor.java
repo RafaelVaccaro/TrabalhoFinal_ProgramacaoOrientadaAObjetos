@@ -9,15 +9,9 @@ public class Professor extends Pessoa {
         this.disciplinas = new ArrayList<>();
     }
 
-    public boolean addDisciplinas(Disciplinas disciplinas) {
-        if (formacao == "professor") {
-            if (this.carga_horaria + disciplinas.carga_horaria <= 12) {
+    public boolean addDisciplinas(String disciplinas) {
                 this.disciplinas.add(disciplinas);
                 return true;
-            } else
-                return false;
-        }
-        return false;
     }
 
     public String getNome(){
@@ -32,9 +26,19 @@ public class Professor extends Pessoa {
         return carga_horaria;
     }
 
+    public String getFormacao(){
+        return formacao;
+    }
+
+    public ArrayList getDisciplinas(){
+        return disciplinas;
+    }
+
     public static Professor criarProfessor(String matricula, int carga_horaria, String nome, String formacao){
 
         Professor x = new Professor(matricula, carga_horaria, nome, formacao);
+
+        Main.Professorada.put(matricula, x);
 
         return x;
 

@@ -1,2 +1,0 @@
-Matricula: Z550| nome: Pedro| carga Horaria: 0| Disciplinas Desejadas: []
-Matricula: Z660| nome: João| carga Horaria: 0| Disciplinas Desejadas: []

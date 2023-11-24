@@ -7,13 +7,11 @@ public class Aluno extends Pessoa {
         this.disciplinas = new ArrayList<>();
     }
 
-    public boolean addDisciplinas(Disciplinas disciplinas) {
-        if (this.carga_horaria + disciplinas.carga_horaria <= 28) {
+    public void addDisciplinas(String disciplinas) {
             this.disciplinas.add(disciplinas);
-                    return true;
-                } else
-                    return false;
-            }
+    
+    } 
+            
 
 
     public ArrayList getDisciplinasMatriculada (){
@@ -32,20 +30,23 @@ public class Aluno extends Pessoa {
         return matricula;
     }
 
-    public void setDisciplinas(Disciplinas x){
+    public static void criarAluno(String matricula, int carga_horaria, String nome, String disciplinas){
 
-        disciplinas.add(x);
-
-    }
-
-    public static Aluno criarAluno(String matricula, int carga_horaria, String nome){//falta o array de disciplinas desejadas
-
+        if(Main.Alunada.containsKey(matricula))
+            Main.Alunada.get(matricula).addDisciplinas(disciplinas);   
+        else{
         Aluno x = new Aluno(matricula, carga_horaria, nome);
 
-        return x;
+        x.addDisciplinas(disciplinas);
 
+        Main.Alunada.put(matricula, x);
+
+        if(Main.GradeHorária.containsKey(disciplinas)){
+        Main.GradeHorária.get(disciplinas).setAlunos(x.getMatricula());
+        Writer.WriterDisciplinas(Main.GradeHorária);
     }
-
+}
+    }
 
 }
 

@@ -1,9 +1,13 @@
+import java.util.ArrayList;
+
 public class Turmas extends Disciplinas {
+    
 
     protected String identificador;
     protected int capacidade_alunos, contador_alunos;
     protected String matricula_professor;
     protected int contador = 1;
+    protected ArrayList<Aluno> chamada;
 
     public Turmas(String nome, String descricao, int carga_horaria, int contador_alunos) {
         super(nome, descricao, carga_horaria);
@@ -11,7 +15,8 @@ public class Turmas extends Disciplinas {
         this.contador_alunos = contador_alunos;
         this.capacidade_alunos = 10;
         this.matricula_professor = null;
-        //lista de presença aluno;
+        this.chamada = new ArrayList<>();
+       
     }
 
     public String getNomeDisciplina(){
@@ -69,9 +74,12 @@ public class Turmas extends Disciplinas {
 
     }
 
-    //Seria legal ter um metodo para setar a capacidade;
+    public void addAluno(Aluno x){//trocar para String
+        this.ListadeAlunos.add(x);
+    }
+
     
-    //Seria fera demias ter um método que CRIA a turma de acordo com o numero de alunos que estão interessados...
+
 
 
 }

@@ -13,21 +13,16 @@ public class Main {
 
     public static void main(String[] args) {
 
-        GradeHorária.put("filosofia", Disciplinas.criarDisciplinas("filosofia", "Muito Legal",20 ));
-        GradeHorária.put("Matemática", Disciplinas.criarDisciplinas("matemática", "mais ou menos", 18));
-
-        Alunada.put("Z550",  Aluno.criarAluno("Z550", 0, "Pedro"));
-        Alunada.put("Z660", Aluno.criarAluno("Z660", 0, "João"));
-
-        Alunada.forEach((k, v) -> System.out.println("Matricula: " + k
-                + "| nome: " + v.getNome()
-                + "| carga Horaria: " + v.getConsultaCargaHoraria()
-                + "| Disciplinas Desejadas: " + v.getDisciplinasMatriculada()));
-
-        Writer.Writer(Alunada);
-
-        Interface teste = new Interface();
+         Interface teste = new Interface();
         teste.load();
+
+        //GradeHorária.put(Interface.nome_disciplinaString, Disciplinas.criarDisciplinas(Interface.nome_disciplinaString, Interface.descricaoString,Interface.carga_horaria_disciplinaInt ));
+
+       
+       // Professorada.put(Interface.matricula_professorString, Professor.criarProfessor(Interface.matricula_professorString, Interface.carga_horaria_professorInt, Interface.nome_professorString, Interface.formacaoString));
+        Writer.WriterAluno(Alunada);
+        Writer.WriterProfessor(Professorada);
+
 
         //Precisamos criar o Professorada 
         //Precisamos add disciplinas aos alunos

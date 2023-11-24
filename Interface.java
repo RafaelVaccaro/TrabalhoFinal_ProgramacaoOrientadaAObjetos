@@ -15,10 +15,10 @@ public class Interface extends JFrame {
     JButton cadastrarProfessorButton, limparProfessorButton, cadastrarAlunoButton, limparAlunoButton,
             cadastrarDisciplinaButton, limparDisciplinaButton;
     TratadorEventos tratadorEventos;
-    String nome_professorString, matricula_professorString, carga_horaria_professorString,
+    public static String nome_professorString, matricula_professorString, carga_horaria_professorString,
             formacaoString, nome_alunoString, matricula_alunoString, carga_horaria_alunoString, disciplina_alunoString,
             nome_disciplinaString, descricaoString, carga_horaria_disciplinaString;
-    int carga_horaria_professorInt, carga_horaria_alunoInt, carga_horaria_disciplinaInt;
+    public static int carga_horaria_professorInt, carga_horaria_alunoInt, carga_horaria_disciplinaInt;
     Font font1 = new Font("SansSerif", Font.BOLD, 20);
 
     public Interface() {
@@ -221,10 +221,17 @@ public class Interface extends JFrame {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == cadastrarProfessorButton) {
                 nome_professorString = txt_nome_professor.getText();
+             
                 matricula_professorString = txt_matricula_professor.getText();
+    
                 carga_horaria_professorString = txt_carga_horaria_professor.getText();
+
                 carga_horaria_professorInt = Integer.parseInt(carga_horaria_professorString);
+
                 formacaoString = txt_formacao.getText();
+
+                Professor.criarProfessor(matricula_alunoString, carga_horaria_alunoInt, nome_alunoString, formacaoString);
+
                 // SALVAR ESSAS STRINGS NO ARQUIVO
             } else if (e.getSource() == limparProfessorButton) {
                 txt_nome_professor.setText("");
@@ -233,10 +240,20 @@ public class Interface extends JFrame {
                 txt_formacao.setText("");
             } else if (e.getSource() == cadastrarAlunoButton) {
                 nome_alunoString = txt_nome_aluno.getText();
+               
                 matricula_alunoString = txt_matricula_aluno.getText();
+    
                 carga_horaria_alunoString = txt_carga_horaria_aluno.getText();
+
                 carga_horaria_alunoInt = Integer.parseInt(carga_horaria_alunoString);
+
                 disciplina_alunoString = txt_disciplina_aluno.getText();
+
+                Aluno.criarAluno(matricula_alunoString, carga_horaria_alunoInt, nome_alunoString, disciplina_alunoString);
+
+               
+                
+                Writer.WriterAluno(Main.Alunada);
                 // SALVAR ESSAS STRINGS NO ARQUIVO
             } else if (e.getSource() == limparAlunoButton) {
                 txt_nome_aluno.setText("");
@@ -248,6 +265,11 @@ public class Interface extends JFrame {
                 descricaoString = txt_descricao.getText();
                 carga_horaria_disciplinaString = txt_carga_horaria_disciplina.getText();
                 carga_horaria_disciplinaInt = Integer.parseInt(carga_horaria_disciplinaString);
+
+                Disciplinas.criarDisciplinas(nome_disciplinaString, descricaoString,carga_horaria_disciplinaInt);
+                
+                Writer.WriterDisciplinas(Main.GradeHorária);
+                
                 // SALVAR ESSAS STRINGS NO ARQUIVO
             } else if (e.getSource() == limparDisciplinaButton) {
                 txt_nome_disciplina.setText("");
