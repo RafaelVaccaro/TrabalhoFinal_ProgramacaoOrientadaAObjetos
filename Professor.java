@@ -10,43 +10,49 @@ public class Professor extends Pessoa {
     }
 
     public boolean addDisciplinas(String disciplinas) {
-        this.disciplinas.add(disciplinas);
-        return true;
+                this.disciplinas.add(disciplinas);
+                return true;
     }
 
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 
-    public String getMatricula() {
+    public String getMatricula(){
         return matricula;
     }
 
-    public int getConsultaCargaHoraria() {
+    public int getConsultaCargaHoraria(){
         return carga_horaria;
     }
 
-    public String getFormacao() {
+    public String getFormacao(){
         return formacao;
     }
 
-    public ArrayList<String> getDisciplinas() {
+    public ArrayList <String>getDisciplinas(){
         return disciplinas;
     }
 
-    public static Professor criarProfessor(String matricula, int carga_horaria, String nome, String formacao) {
+    public static void criarProfessor(String matricula, int carga_horaria, String nome, String formacao, String disciplinas){
 
+        if(Main.Professorada.containsKey(matricula))
+        Main.Professorada.get(matricula).addDisciplinas(disciplinas);
+        else{        
         Professor x = new Professor(matricula, carga_horaria, nome, formacao);
-
+         x.addDisciplinas(disciplinas);
         Main.Professorada.put(matricula, x);
 
-        return x;
+        if (Main.GradeHorária.containsKey(disciplinas))
+        Main.GradeHorária.get(disciplinas).setProfessor_Disciplina(x.getMatricula());
+        }
 
     }
 
-    public void setDisciplinas(Disciplinas x) {
 
-        disciplinas.add(x);
+    public void setDisciplinas(Disciplinas x){
+
+        //disciplinas.add(x);
 
     }
 }

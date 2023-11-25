@@ -8,42 +8,43 @@ public class Aluno extends Pessoa {
     }
 
     public void addDisciplinas(String disciplinas) {
-        this.disciplinas.add(disciplinas);
-
-    }
-
-    public ArrayList<String> getDisciplinasMatriculada() {
+            this.disciplinas.add(disciplinas);
+    
+    } 
+            
+    public ArrayList getDisciplinasMatriculada (){
         return disciplinas;
     }
 
-    public int getConsultaCargaHoraria() {
+    public int getConsultaCargaHoraria(){
         return carga_horaria;
     }
 
-    public String getNome() {
+    public String getNome(){
         return nome;
     }
 
-    public String getMatricula() {
+    public String getMatricula(){
         return matricula;
     }
 
-    public static void criarAluno(String matricula, int carga_horaria, String nome, String disciplinas) {
+    public static void criarAluno(String matricula, int carga_horaria, String nome, String disciplinas){
 
-        if (Main.Alunada.containsKey(matricula))
-            Main.Alunada.get(matricula).addDisciplinas(disciplinas);
-        else {
-            Aluno x = new Aluno(matricula, carga_horaria, nome);
+        if(Main.Alunada.containsKey(matricula))
+            Main.Alunada.get(matricula).addDisciplinas(disciplinas);   
+        else{
+        Aluno x = new Aluno(matricula, carga_horaria, nome);
 
-            x.addDisciplinas(disciplinas);
+        x.addDisciplinas(disciplinas);
 
-            Main.Alunada.put(matricula, x);
+        Main.Alunada.put(matricula, x);
 
-            if (Main.GradeHorária.containsKey(disciplinas)) {
-                Main.GradeHorária.get(disciplinas).setAlunos(x.getMatricula());
-                Writer.WriterDisciplinas(Main.GradeHorária);
-            }
-        }
+        if(Main.GradeHorária.containsKey(disciplinas)){
+        Main.GradeHorária.get(disciplinas).setAlunos(x.getMatricula());
+        Writer.WriterDisciplinas(Main.GradeHorária);
+    }
+}
     }
 
 }
+

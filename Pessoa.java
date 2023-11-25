@@ -6,7 +6,7 @@ public abstract class Pessoa {
     protected int carga_horaria;
     protected ArrayList<String> disciplinas;
 
-    // Construtor de Pessoas
+    //Construtor de Pessoas
     public Pessoa(String matricula, String nome, int carga_horaria) {
         this.matricula = matricula;
         this.nome = nome;
@@ -15,7 +15,7 @@ public abstract class Pessoa {
     }
 
     public abstract int getConsultaCargaHoraria();
-
+    
     public abstract String getNome();
 
     public abstract String getMatricula();

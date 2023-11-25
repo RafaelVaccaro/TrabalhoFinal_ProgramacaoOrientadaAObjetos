@@ -6,15 +6,15 @@ import java.util.HashMap;
 public class Writer {
     public static void WriterAluno(HashMap<String, Aluno> Alunada) {
         try {
-            FileWriter fileWriter = new FileWriter("Alunos.txt");
+            FileWriter fileWriter = new FileWriter("Alunos.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             Alunada.forEach((k, v) -> {
                 try {
-                    bufferedWriter.write("Matricula: " + k +
-                            "| nome: " + v.getNome() +
-                            "| carga Horaria: " + v.getConsultaCargaHoraria() +
-                            "| Disciplinas Desejadas: " + v.getDisciplinasMatriculada());
+                    bufferedWriter.write( k +
+                        "," + v.getNome() +
+                        "," + v.getConsultaCargaHoraria() +
+                        "," + v.getDisciplinasMatriculada());
                     bufferedWriter.newLine();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -29,18 +29,19 @@ public class Writer {
         }
     }
 
-    public static void WriterProfessor(HashMap<String, Professor> Professorada) {
+
+public static void WriterProfessor(HashMap<String, Professor> Professorada) {
         try {
-            FileWriter fileWriter = new FileWriter("Professor.txt");
+            FileWriter fileWriter = new FileWriter("Professor.");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
 
             Professorada.forEach((k, v) -> {
                 try {
-                    bufferedWriter.write("Matricula: " + k +
-                            "| nome: " + v.getNome() +
-                            "| carga Horaria: " + v.getConsultaCargaHoraria() +
-                            "| Formação: " + v.getFormacao() +
-                            "| Disciplinas: " + v.getDisciplinas());
+                    bufferedWriter.write( k +
+                        "," + v.getNome() +
+                        "," + v.getConsultaCargaHoraria()+ 
+                        "," + v.getFormacao() +
+                        "," + v.getDisciplinas());
                     bufferedWriter.newLine();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -55,7 +56,7 @@ public class Writer {
         }
     }
 
-    public static void WriterDisciplinas(HashMap<String, Disciplinas> GradeHorária) {
+    public static void WriterDisciplinas(HashMap<String, Disciplinas> GradeHorária ) {
         try {
             FileWriter fileWriter = new FileWriter("Disciplinas.csv");
             BufferedWriter bufferedWriter = new BufferedWriter(fileWriter);
@@ -63,10 +64,10 @@ public class Writer {
             GradeHorária.forEach((k, v) -> {
                 try {
                     bufferedWriter.write("" + k +
-                            "," + v.getDescricaoDisciplina() +
-                            "," + v.getCargaHorariaDisciplina() +
-                            "," + v.getAlunos() +
-                            "," + v.getProfessores());
+                        "," + v.getDescricaoDisciplina() +
+                        "," + v.getCargaHorariaDisciplina()+ 
+                        "," + v.getAlunos() +
+                        "," + v.getProfessores());
                     bufferedWriter.newLine();
                 } catch (IOException e) {
                     e.printStackTrace();
@@ -80,5 +81,6 @@ public class Writer {
             e.printStackTrace();
         }
     }
+
 
 }
