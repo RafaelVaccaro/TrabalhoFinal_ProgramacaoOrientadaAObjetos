@@ -5,7 +5,7 @@ import java.awt.event.*;
 public class Interface extends JFrame {
 
     JTabbedPane tab;
-    JPanel professor, aluno, disciplina, d_professor, d_aluno, d_disciplina;
+    JPanel professor, aluno, disciplina, d_professor, d_aluno, d_disciplina, alocacao;
     JLabel nome_professor, matricula_professor, carga_horaria_professor, formacao, nome_aluno,
             matricula_aluno, carga_horaria_aluno, disciplina_aluno, nome_disciplina, descricao,
             carga_horaria_disciplina;
@@ -22,7 +22,7 @@ public class Interface extends JFrame {
     Font font1 = new Font("SansSerif", Font.BOLD, 20);
 
     public Interface() {
-
+        
         super("Trabalho Final POO");
         tab = new JTabbedPane();
 
@@ -81,7 +81,7 @@ public class Interface extends JFrame {
         professor.add(txt_formacao);
         professor.add(cadastrarProfessorButton);
         professor.add(limparProfessorButton); // FIM PROFESSOR
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
         aluno = new JPanel(new GridLayout(0, 2)); // COMECO ALUNO
         aluno.setBackground(Color.CYAN);
 
@@ -137,7 +137,7 @@ public class Interface extends JFrame {
         aluno.add(txt_disciplina_aluno);
         aluno.add(cadastrarAlunoButton);
         aluno.add(limparAlunoButton); // FIM ALUNO
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
         disciplina = new JPanel(new GridLayout(0, 2));// INICIO DISCIPLINA
         disciplina.setBackground(Color.ORANGE);
 
@@ -182,13 +182,15 @@ public class Interface extends JFrame {
         disciplina.add(txt_carga_horaria_disciplina);
         disciplina.add(cadastrarDisciplinaButton);
         disciplina.add(limparDisciplinaButton); // FIM DISCIPLINA
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-        d_professor = new JPanel(new GridLayout(0, 2));
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-        d_aluno = new JPanel(new GridLayout(0, 2));
-//////////////////////////////////////////////////////////////////////////////////////////////////////
-        d_disciplina = new JPanel(new GridLayout(0, 2));
-//////////////////////////////////////////////////////////////////////////////////////////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        alocacao = new JPanel(new GridLayout(0, 1));
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        d_professor = new JPanel(new GridLayout(0, 1));
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        d_aluno = new JPanel(new GridLayout(0, 1));
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
+        d_disciplina = new JPanel(new GridLayout(0, 1));
+        //////////////////////////////////////////////////////////////////////////////////////////////////////
         tratadorEventos = new TratadorEventos();
         cadastrarProfessorButton.addActionListener(tratadorEventos);
         limparProfessorButton.addActionListener(tratadorEventos);
@@ -200,20 +202,21 @@ public class Interface extends JFrame {
         tab.addTab("Cadastro Professor", professor);
         tab.addTab("Cadastro Aluno", aluno);
         tab.addTab("Cadastro Disciplina", disciplina);
+        tab.addTab("Alocação", alocacao);
         tab.addTab("Detalhes Professor", d_professor);
         tab.addTab("Detalhes Aluno", d_aluno);
         tab.addTab("Detalhes Disciplina", d_disciplina);
 
         add(tab);
 
-    }
-
-    public void load() {
         // device.setFullScreenWindow(this);
         this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         this.setExtendedState(JFrame.MAXIMIZED_BOTH);
         this.setLocationRelativeTo(null);
         this.setVisible(true);
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////
+        
     }
 
     private class TratadorEventos implements ActionListener {
@@ -221,9 +224,9 @@ public class Interface extends JFrame {
         public void actionPerformed(ActionEvent e) {
             if (e.getSource() == cadastrarProfessorButton) {
                 nome_professorString = txt_nome_professor.getText();
-             
+
                 matricula_professorString = txt_matricula_professor.getText();
-    
+
                 carga_horaria_professorString = txt_carga_horaria_professor.getText();
 
                 carga_horaria_professorInt = Integer.parseInt(carga_horaria_professorString);
@@ -232,49 +235,46 @@ public class Interface extends JFrame {
 
                 Professor.criarProfessor(matricula_alunoString, carga_horaria_alunoInt, nome_alunoString, formacaoString);
 
-                // SALVAR ESSAS STRINGS NO ARQUIVO
             } else if (e.getSource() == limparProfessorButton) {
+
                 txt_nome_professor.setText("");
                 txt_matricula_professor.setText("");
                 txt_carga_horaria_professor.setText("");
                 txt_formacao.setText("");
+
             } else if (e.getSource() == cadastrarAlunoButton) {
+
                 nome_alunoString = txt_nome_aluno.getText();
-               
                 matricula_alunoString = txt_matricula_aluno.getText();
-    
                 carga_horaria_alunoString = txt_carga_horaria_aluno.getText();
-
                 carga_horaria_alunoInt = Integer.parseInt(carga_horaria_alunoString);
-
                 disciplina_alunoString = txt_disciplina_aluno.getText();
-
                 Aluno.criarAluno(matricula_alunoString, carga_horaria_alunoInt, nome_alunoString, disciplina_alunoString);
-
-               
-                
                 Writer.WriterAluno(Main.Alunada);
-                // SALVAR ESSAS STRINGS NO ARQUIVO
+                txt_disciplina_aluno.setText("");
+
             } else if (e.getSource() == limparAlunoButton) {
+
                 txt_nome_aluno.setText("");
                 txt_matricula_aluno.setText("");
                 txt_carga_horaria_aluno.setText("");
                 txt_disciplina_aluno.setText("");
+
             } else if (e.getSource() == cadastrarDisciplinaButton) {
+
                 nome_disciplinaString = txt_nome_disciplina.getText();
                 descricaoString = txt_descricao.getText();
                 carga_horaria_disciplinaString = txt_carga_horaria_disciplina.getText();
                 carga_horaria_disciplinaInt = Integer.parseInt(carga_horaria_disciplinaString);
-
-                Disciplinas.criarDisciplinas(nome_disciplinaString, descricaoString,carga_horaria_disciplinaInt);
-                
+                Disciplinas.criarDisciplinas(nome_disciplinaString, descricaoString, carga_horaria_disciplinaInt);
                 Writer.WriterDisciplinas(Main.GradeHorária);
-                
-                // SALVAR ESSAS STRINGS NO ARQUIVO
+
             } else if (e.getSource() == limparDisciplinaButton) {
+
                 txt_nome_disciplina.setText("");
                 txt_descricao.setText("");
                 txt_carga_horaria_disciplina.setText("");
+
             }
         }
     }
